@@ -1,8 +1,11 @@
-let noteTitle;
-let noteText;
-let saveNoteBtn;
-let newNoteBtn;
-let noteList;
+// index.js starter-code for NoteTaker
+
+
+let noteTitle = $('.note-title');
+let noteText = $('.note-textarea');
+let saveNoteBtn = $('.save-note');
+let newNoteBtn = $('.new-note');
+let noteList = $('list-container .list-group');
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
