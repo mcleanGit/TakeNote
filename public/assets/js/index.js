@@ -1,6 +1,4 @@
 // index.js starter-code for NoteTaker
-
-
 let noteTitle = $('.note-title');
 let noteText = $('.note-textarea');
 let saveNoteBtn = $('.save-note');
