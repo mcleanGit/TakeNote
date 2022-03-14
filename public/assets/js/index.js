@@ -1,9 +1,9 @@
 // index.js starter-code for NoteTaker
-let noteTitle = $('.note-title');
-let noteText = $('.note-textarea');
-let saveNoteBtn = $('.save-note');
-let newNoteBtn = $('.new-note');
-let noteList = $('list-container .list-group');
+let noteTitle;
+let noteText;
+let saveNoteBtn;
+let newNoteBtn;
+let noteList;
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
@@ -13,45 +13,49 @@ if (window.location.pathname === '/notes') {
   noteList = document.querySelectorAll('.list-container .list-group');
 }
 
-// Show an element
+// Show an element  see below
 const show = (elem) => {
   elem.style.display = 'inline';
 };
 
-// Hide an element
+// Hide an element  see below
 const hide = (elem) => {
   elem.style.display = 'none';
 };
 
-// activeNote is used to keep track of the note in the textarea
+// activeNote is used to keep track of the note in the textarea  OK
 let activeNote = {};
 
-const getNotes = () =>
-  fetch('/api/notes', {
+const getNotes = function() {
+  return fetch('/api/notes', {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json',
+      'Note-Title': 'note-text/json',
     },
   });
+}
 
-const saveNote = (note) =>
-  fetch('/api/notes', {
+const saveNote = function(note) {
+  return fetch('api/notes', {
+    data: note,
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Note-Title': 'note-text/json',
     },
     body: JSON.stringify(note),
   });
+}
 
-const deleteNote = (id) =>
+const deleteNote = function(id) {
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
-      'Content-Type': 'application/json',
+      'Note-Title': 'note-text/json',
     },
   });
+}
 
-const renderActiveNote = () => {
+const renderActiveNote = function() {
   hide(saveNoteBtn);
 
   if (activeNote.id) {
@@ -67,12 +71,12 @@ const renderActiveNote = () => {
   }
 };
 
-const handleNoteSave = () => {
+const handleNoteSave = function() {
   const newNote = {
     title: noteTitle.value,
     text: noteText.value,
   };
-  saveNote(newNote).then(() => {
+  saveNote(newNote).then(function(_data) {
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -80,7 +84,7 @@ const handleNoteSave = () => {
 
 // Delete the clicked note
 const handleNoteDelete = (e) => {
-  // Prevents the click listener for the list from being called when the button inside of it is clicked
+  // Prevents the click listener for the list from being called when the button inside of it is clicked (OK?)
   e.stopPropagation();
 
   const note = e.target;
@@ -91,17 +95,17 @@ const handleNoteDelete = (e) => {
   }
 
   deleteNote(noteId).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
-};
+      getAndRenderNotes();
+      renderActiveNote();
+    });
+}
 
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
   renderActiveNote();
-};
+}
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
@@ -110,7 +114,7 @@ const handleNewNoteView = (e) => {
 };
 
 const handleRenderSaveBtn = () => {
-  if (!noteTitle.value.trim() || !noteText.value.trim()) {
+  if (!noteTitle.value().trim() || !noteText.value().trim()) {
     hide(saveNoteBtn);
   } else {
     show(saveNoteBtn);
@@ -126,7 +130,7 @@ const renderNoteList = async (notes) => {
 
   let noteListItems = [];
 
-  // Returns HTML element with or without a delete button
+  // Returns HTML element with or without (?) a delete button; li commented out in notes.html at present
   const createLi = (text, delBtn = true) => {
     const liEl = document.createElement('li');
     liEl.classList.add('list-group-item');
