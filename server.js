@@ -1,6 +1,6 @@
 // server.js deals with routing calls
 const express = require('express');
-const { notes } = require('./db/notes.json');
+// const { notes } = require('./db/notes.json');
 
 // router.use(require('./routes/apiroutes/apiroutes.js'));
 // router.use(require('./routes/htmlroutes/htmlroutes.js'));
@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.get('/api/notes', (req, res) => {
- res.json(notes);
+ res.json(data);
 });
 
 // const apiroutes = require('./routes/apiroutes/apiroutes.js');
