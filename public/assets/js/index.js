@@ -1,4 +1,4 @@
-// index.js starter-code for NoteTaker
+// index.js starter-code for NoteTaker -- no TODOs here
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -26,36 +26,35 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea  OK
 let activeNote = {};
 
-const getNotes = function() {
-  return fetch('/api/notes', {
+const getNotes = () => {
+  fetch('/api/notes', {
     method: 'GET',
     headers: {
-      'Note-Title': 'note-text/json',
+      'Content-Type': 'application/json'
     },
   });
 }
 
-const saveNote = function(note) {
-  return fetch('api/notes', {
-    data: note,
-    method: 'POST',
-    headers: {
-      'Note-Title': 'note-text/json',
-    },
-    body: JSON.stringify(note),
-  });
-}
+const saveNote = (note) => 
+  fetch('api/notes', {
+  data: note,
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(note),
+});
 
-const deleteNote = function(id) {
+const deleteNote = (id) => {
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
-      'Note-Title': 'note-text/json',
+      'Content-Type': 'application/json',
     },
   });
 }
 
-const renderActiveNote = function() {
+const renderActiveNote = () => {
   hide(saveNoteBtn);
 
   if (activeNote.id) {
@@ -71,12 +70,12 @@ const renderActiveNote = function() {
   }
 };
 
-const handleNoteSave = function() {
+const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
     text: noteText.value,
   };
-  saveNote(newNote).then(function(_data) {
+  saveNote(newNote).then(() => {
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -107,7 +106,7 @@ const handleNoteView = (e) => {
   renderActiveNote();
 }
 
-// Sets the activeNote to and empty object and allows the user to enter a new note
+// Sets the activeNote to an empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
   activeNote = {};
   renderActiveNote();
@@ -186,3 +185,4 @@ if (window.location.pathname === '/notes') {
 }
 
 getAndRenderNotes();
+// end index.js script
