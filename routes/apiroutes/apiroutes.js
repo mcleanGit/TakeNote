@@ -1,24 +1,19 @@
-const router = require('express');
-const { route } = require('express/lib/application');
-const res = require('express/lib/response');
+const router = require('express').Router();
 const fs = require('fs');
+const store = require('./db/store');
 
-router.use(require('./routes/apiroutes/apiroutes.js'));
-router.use(requre('./routes/htmlroutes/htmlroutes'));
-
-module.exports = router;
+// to review this code and need for it in this form
 module.exports = function(app) {
-
- app.get('/notes', function(req, res) {
-  fs.readFile('./db/notes.json', (err, data) => {
+ app.get('api/notes', function(req, res) {
+  fs.readFile('./db/db.json', (err, data) => {
    if (err) throw err;
    dbNotes = JSON.parse(data);
    res.send(dbNotes);
   });
 });
- app.post('/notes', function (req, res) {
+ app.post('/api/notes', function (req, res) {
   const userNotes = req.body;
-  fs.readFile('/db/notes.json', (err, data) => {
+  fs.readFile('./db/db.json', (err, data) => {
    if (err) throw err;
    dbNotes = JSON.parse(data);
    dbNotes.push(userNotes);
@@ -30,7 +25,7 @@ module.exports = function(app) {
    });
    stringNotes = JSON.stringify(dbNotes);
 
-   fs.writeFile('.db/notes.json', stringNotes, (err, data) => {
+   fs.writeFile('.db/db.json', stringNotes, (err, data) => {
     if (err) throw err; 
    });
   });
@@ -47,7 +42,7 @@ module.exports = function(app) {
        dbNotes.splice([i], 1);
       }
     }
-    stringNotes = JSON.stringify(dbNotes);
+    stringNotes = JSON.stringify(data);
 
     fs.writeFile('./db/notes.json', stringNotes, (err, data) => {
      if (err) throw err;
