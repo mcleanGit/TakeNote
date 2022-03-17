@@ -1,8 +1,9 @@
+// store.js is new JSON file created to handle notes to db.json with fs module - post SS session
 const fs = require('fs');
 const util = require('util');
 
 const uuid = require('uuid');
-const { runInThisContext } = require('vm');
+// const { runInThisContext } = require('vm');
 
 const fsReadFile = util.promisify(fs.readFile);
 const fsWriteFile = util.promisify(fs.writeFile);
