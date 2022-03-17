@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const fs = require('fs');
-const store = require('./db/store');
+const store = require('./db/store.js');
+// const server = require('./server.js');
 
 // to review this code and need for it in this form
 module.exports = function(app) {
