@@ -2,7 +2,7 @@
 
 ## The Task
 
-The task is to create an application called Note Taker (or NoteTaker) that can be used to write and save notes. It is sent to mcleanGit GitHub repo TakeNote.
+The task is to create an application called Note Taker (or NoteTaker) that can be used to write and save notes. It is found on the mcleanGit GitHub repo as TakeNote.
 This application uses an Express.js back end and will save and retrieve note data from a JSON file.
 
 The application’s front end was already created. The purpose of this project is to create the back end, connect the two, and then deploy the entire application to Heroku. The starter code for the front end is: (https://github.com/coding-boot-camp/miniature-eureka).
