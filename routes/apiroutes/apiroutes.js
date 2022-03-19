@@ -1,11 +1,11 @@
-const router = require('express').Router();
+const router =require('../../db/store.js');
 const fs = require('fs');
 const store = require('../../db/store.js');
 // const server = require('./server.js');
 const app = require('express');
-const uuid = require('uuid'); 
+const uuid = require('uuid');  // added here ? in store.js
 
-// to review this code and need for it in this form
+// to review this code and need for it in this form  NB ??
 module.exports = function(app) {
  app.get('api/notes', function(req, res) {
   fs.readFile('../../db/db.json', (err, data) => {
