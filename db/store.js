@@ -1,4 +1,4 @@
-// store.js is new JSON file created to handle notes to db.json with fs module - post SS session
+// store.js is new JS file created to handle notes to db.json with fs module - post SS session
 const fs = require('fs');
 const util = require('util');
 
