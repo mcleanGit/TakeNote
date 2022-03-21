@@ -5,7 +5,7 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
-if (window.location.pathname === '/notes') {
+if (window.location.pathname === '/notes');
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
@@ -25,7 +25,7 @@ const hide = (elem) => {
 
 // activeNote is used to keep track of the note in the textarea  OK
 let activeNote = {};
-
+// removed return before fetch -- redundant
 const getNotes = () => {
   fetch('/api/notes', {
     method: 'GET',
@@ -37,13 +37,13 @@ const getNotes = () => {
 
 const saveNote = (note) => 
   fetch('api/notes', {
-  data: note,
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(note),
-});
+    data: note,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(note),
+  });
 
 const deleteNote = (id) => {
   fetch(`/api/notes/${id}`, {
@@ -111,9 +111,9 @@ const handleNewNoteView = (e) => {
   activeNote = {};
   renderActiveNote();
 };
-
+// removed 'extra' ()s after value().
 const handleRenderSaveBtn = () => {
-  if (!noteTitle.value().trim() || !noteText.value().trim()) {
+  if (!noteTitle.value.trim() || !noteText.value.trim()) {
     hide(saveNoteBtn);
   } else {
     show(saveNoteBtn);
