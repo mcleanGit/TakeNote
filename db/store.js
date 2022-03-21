@@ -3,7 +3,7 @@ const fs = require('fs');
 const util = require('util');
 
 const uuid = require('uuid');
-const { runInThisContext } = require('vm'); // this was auto-supplied?
+// const { runInThisContext } = require('vm'); // this was auto-supplied?
 
 const fsReadFile = util.promisify(fs.readFile);
 const fsWriteFile = util.promisify(fs.writeFile);
@@ -42,7 +42,7 @@ class Store {
  removeNote(id) {
   return thisNote.getNotes()
   .then ((notes) => notes.filter((note) => note.id !== id ))
-  .then ((filteredNotes) => this.write(filteredNote));
+  .then ((filteredNote) => this.write(filteredNote));
  }
 }
  module.exports = new Store();
