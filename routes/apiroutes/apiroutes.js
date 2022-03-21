@@ -1,57 +1,37 @@
-const router =require('../../db/store.js');
-const fs = require('fs');
-const store = require('../../db/store.js');
-// const server = require('./server.js');
-const app = require('express');
-const uuid = require('uuid');  // added here ? in store.js
+const router = require('express').Router();
+const store = require('../../db/store');
 
-// to review this code and need for it in this form  NB ??
-module.exports = function(app) {
- app.get('api/notes', function(req, res) {
-  fs.readFile('../../db/db.json', (err, data) => {
-   if (err) throw err;
-   dbNotes = JSON.parse(data);
-   res.send(dbNotes);
-  });
-});
- app.post('/api/notes', function (req, res) {
-  const userNotes = req.body;
-  fs.readFile('../../db/db.json', (err, data) => {
-   if (err) throw err;
-   dbNotes = JSON.parse(data);
-   dbNotes.push(userNotes);
-   let number = 1;
-   dbNotes.forEach((note, index) => {
-    note.id = number;
-    number++;
-    return dbNotes;
-   });
-   stringNotes = JSON.stringify(dbNotes);
-
-   fs.writeFile('../../db/db.json', stringNotes, (err, data) => {
-    if (err) throw err; 
-   });
-  });
- });
-
-  app.delete('api/notes/:id', function(req, res) {
-   const deleteNote = req.param.id;
-   fs.readFile ('../../db/db.json', (err, data) => {
-    if (err) throw err;
-
-    dbNotes = JSON.parse(data);
-    for (let i = 0; i < dbNotes.length; i++) {
-      if (dbNotes[i].id === Number(deleteNote)) {
-       dbNotes.splice([i], 1);
-      }
-    }
-    stringNotes = JSON.stringify(data);
-
-    fs.writeFile('../../db/db.json', stringNotes, (err, data) => {
-     if (err) throw err;
+// change from app.get to router.get etc and to => function using store
+router.get('/notes', (_req, res) => {
+    store.getNotes().then((notes) => {
+      return res.json(notes);
+    }).catch((err) => {
+      res.status(500).json(err);
     });
-     res.status(223).send();
-   });
-  });
-}
+  })
 
+router.post('/api/notes', (req, res) => {
+    const newNote = { title, text, id: uuid() };
+    store.addNote().then(newNote);
+    req.body = notes.length.toString();
+      if (!validateNotes(req.body)) {
+        res.status(400).send('Notes not properly formatted.');
+      } else {    
+        addNewNote(req.body, notes);
+        res.json(newNote);
+      } 
+  });
+
+router.delete('api/notes/:id', (req, res) => {
+      store.removeNote(id);
+      const id = uuid;
+      note = JSON.parse(notes);
+      for (let i = 0; i < notes.length; i++) {
+        if (notes[i].id === Number(deleteNote)) {
+          notes.splice([i], 1);
+        }
+        stringNotes = JSON.stringify(notes);
+      }
+  });
+      
+module.exports = router;
