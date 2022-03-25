@@ -37,7 +37,8 @@ WHEN I click on the Write icon in the navigation at the top of the page
 
 ## Mock-Up
 
-The following images show the web application's appearance and functionality: 
+The following images show the web application's appearance and functionali ty: 
+*NOTE: These mockups have been superseded by new data in the deployed application.*
 
 ![Existing notes are listed in the left-hand column with empty fields on the right-hand side for the new note’s title and text.](./Assets/11-express-homework-demo-01.png)
 
@@ -61,7 +62,7 @@ The following API routes are created:
 Each note has a *unique id* when it's saved (using `npm` packages: EX TBD!).
 
 ## 'Bonus' - additional functionality
-
+*NOTE: this additioanl functionality is completed and deployed.*
 The preliminary work has not dealt with DELETE requests, but the application has that functionality in the front end. 
 The application hopes to add a DELETE route to the application using the following guideline:
 
@@ -72,13 +73,20 @@ The application hopes to add a DELETE route to the application using the followi
 The following items are submitted for review:
 
 * The URL of the functional, deployed application.
-  Note: deployed to Heroku!
+  *Note: deployed to Heroku!*
+  https://pacific-fjord-94672.herokuapp.com
 
+  
 * The URL of the GitHub repository. The repository is named TakeNote and this README describes the project.
   https://github.com/mcleanGit/TakeNote
 
 * Additional screenshots provided here:
-  NoteTaker-landing_page; NoteTake-notes_page_empty; 
+  1. NoteTaker-landing_page: 
+  <img src="https://user-images.githubusercontent.com/94858165/160164016-f6e67608-e43b-49a2-8bcf-995297da6e10.png" width="15%"></img> 
+  2. NoteTaker-notes_page_empty:
+  <img src="https://user-images.githubusercontent.com/94858165/160164047-8f14fd45-5c9b-475a-b96b-d4bf638b6502.png" width="15%"></img> 
+  3. NoteTaker-notes_page_populated:
+  <img src="https://user-images.githubusercontent.com/94858165/160164058-6f49d055-27bd-4683-b675-3334fce51aef.png" width="15%"></img> 
 
 
 
