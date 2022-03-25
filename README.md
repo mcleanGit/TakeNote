@@ -62,11 +62,11 @@ The following API routes are created:
 Each note has a *unique id* when it's saved (using `npm` packages: EX TBD!).
 
 ## 'Bonus' - additional functionality
-*NOTE: this additioanl functionality is completed and deployed.*
-The preliminary work has not dealt with DELETE requests, but the application has that functionality in the front end. 
-The application hopes to add a DELETE route to the application using the following guideline:
+*NOTE: this additional functionality was added to apiroutes and is deployed.*
+The preliminary work did not deal with DELETE requests, but the application has that functionality in the front end. 
+The application has now added a DELETE route to the application using the following guideline:
 
-* `DELETE /api/notes/:id` should receive a query parameter containing the id of a note to delete. To delete a note, all notes need to be read from the `db.json` file, the note with the given `id` property removed, and the notes then rewritten to the `db.json` file.  Implemented.
+* `DELETE /api/notes/:id` should receive a query parameter containing the id of a note to delete. To delete a note, all notes need to be read from the `db.json` file, the note with the given `id` property removed, and the notes then rewritten to the `db.json` file.  *Implemented.*
 
 ## Review
 
