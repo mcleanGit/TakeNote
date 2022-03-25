@@ -1,4 +1,4 @@
-<!-- notes.html for NoteTaker in ./public/notes.html starter-code with some tweaks in paths, +jQuery options -->
+<!-- notes.html for NoteTaker in ./public/notes.html starter-code with some tweaks in paths -->
 <!DOCTYPE html>
 <html lang="en-CA">  <!-- replaced US with CA -->
   <head>
@@ -34,9 +34,9 @@
       <div class="row">
         <div class="col-4 list-container">
           <div class="card">
-          <ul class="list-group">
-            <!-- this liEl is handled dynamically in the JS code ~133 -->
-      <!--    <li class="list-group-item display-none"></li> -->
+          <ul class="list-group" id="list-group">
+            <!-- this liEl is handled dynamically in the JS code ~132 -->
+            <!-- <li class="list-group-item display-none"></li> -->
           </ul>
           </div>
         </div>
@@ -51,8 +51,6 @@
         </div>
       </div>
     </div>
-    <!-- added jquery script but not used, delete ? -->    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- added local js in public/assets/js folder, added . before /assets -->
     <script src="./assets/js/index.js"></script>
   </body>

@@ -1,11 +1,11 @@
-// index.js starter-code for NoteTaker -- no TODOs here
+// index.js starter-code for NoteTaker -- no TODOs here  -- fixed typos!
 let noteTitle;
 let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
-if (window.location.pathname === '/notes');
+if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
@@ -26,14 +26,13 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea  OK
 let activeNote = {};
 // removed return before fetch -- redundant
-const getNotes = () => {
+const getNotes = () => 
   fetch('/api/notes', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     },
   });
-}
 
 const saveNote = (note) => 
   fetch('api/notes', {
@@ -45,14 +44,14 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
-const deleteNote = (id) => {
+const deleteNote = (id) => 
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
   });
-}
+
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
@@ -129,7 +128,8 @@ const renderNoteList = async (notes) => {
 
   let noteListItems = [];
 
-  // Returns HTML element with or without (?) a delete button; li commented out in notes.html at present
+  // Returns HTML element with a delete button on noteText keyup
+  // li commented out in notes.html, drive from this JS
   const createLi = (text, delBtn = true) => {
     const liEl = document.createElement('li');
     liEl.classList.add('list-group-item');
