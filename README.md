@@ -74,8 +74,12 @@ The following items are submitted for review:
 * The URL of the functional, deployed application.
   Note: deployed to Heroku!
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+* The URL of the GitHub repository. The repository is named TakeNote and this README describes the project.
   https://github.com/mcleanGit/TakeNote
+
+* Additional screenshots provided here:
+  NoteTaker-landing_page; NoteTake-notes_page_empty; 
+
 
 
 - - -
