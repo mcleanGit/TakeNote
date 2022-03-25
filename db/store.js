@@ -1,10 +1,7 @@
-// store.js is new JS file created to handle notes to db.json with fs module - post SS session
+// store.js is class Store JS file newly created to handle notes to/from db.json with fs modules (post tutoring discussions)
 const fs = require('fs');
 const util = require('util');
-
 const uuid = require('uuid');
-// const { runInThisContext } = require('vm'); // this was auto-supplied?
-
 const fsReadFile = util.promisify(fs.readFile);
 const fsWriteFile = util.promisify(fs.writeFile);
 
@@ -33,14 +30,15 @@ class Store {
   if (!title || !text) {
    throw new Error ('Please enter a note title and a note text');
   }
-  const newNote = { title, text, id: uuid()};
+  // imports uuid to provide unique id to new note, also requisite for remove/delete
+  const newNote = { title, text, id: `${uuid.v1()}` };
   return this.getNotes()
   .then((notes) => [...notes, newNote])
-  .then((updatedNotes) => this.write(updatedNote))
+  .then((updatedNote) => this.write(updatedNote))
   .then(() => newNote);
  }
  removeNote(id) {
-  return thisNote.getNotes()
+  return this.getNotes()
   .then ((notes) => notes.filter((note) => note.id !== id ))
   .then ((filteredNote) => this.write(filteredNote));
  }
